@@ -1,29 +1,38 @@
 import math as mt
 
-def main():
-    number_1 = int(input("1つ目の自然数を入力してください: "))
-    number_2 = int(input("2つ目の自然数を入力してください: "))  
+def main(): 
+    num1 = int(input("1つ目の自然数を入力してください: "))
+    num2 = int(input("2つ目の自然数を入力してください: "))  
 
-    sum = number_1 + number_2
-    diff = number_1 - number_2
-    prod = number_1 * number_2
-    div = number_1 / number_2
-
-    gcd = mt.gcd(number_1, number_2)
-    lcm = int(prod / mt.gcd(number_1, number_2))
-
-    GP_sum = int(sum * (abs(diff) + 1) / 2)
-
+    sum = num1 + num2
+    diff = num1 - num2
+    prod = num1 * num2
+    div = num1 / num2
     print(f'2つの自然数の合計は {sum}')
     print(f'1つめの自然数から2つ目の自然数を引くと {diff}')
     print(f'2つの自然数の積は {prod}')
     print(f'1つ目の自然数を2つ目の自然数で割ると {div}')
 
+    gcd = mt.gcd(num1, num2)
+    lcm = int(prod / mt.gcd(num1, num2))
     print(f'2つの自然数の最大公約数は {gcd}')
     print(f'2つの自然数の最小公倍数は {lcm}')
 
+    GP_sum = int(sum * (abs(diff) + 1) / 2)
     print(f'小さい方の自然数から大きい方の自然数までのすべての自然数の和は {GP_sum}')
 
+    for n in range(min(num1, num2), max(num1, num2) + 1):
+        count = 0
+        if n == 1:
+            continue
+
+        if n != 1:
+            for i in range(2, int(n ** 0.5) + 1):
+                if n % i == 0:
+                    break
+                if i == int(n**0.5):
+                    count += 1
+    print(f'小さい方の自然数から大きい方の自然数までに存在する素数の個数は {count}')
 
 if __name__=='__main__':
     main()
