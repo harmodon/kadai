@@ -21,17 +21,16 @@ def main():
     GP_sum = int(sum * (abs(diff) + 1) / 2)
     print(f'小さい方の自然数から大きい方の自然数までのすべての自然数の和は {GP_sum}')
 
+    count = 0
     for n in range(min(num1, num2), max(num1, num2) + 1):
-        count = 0
-        if n == 1:
-            continue
-
         if n != 1:
+            count += 1
             for i in range(2, int(n ** 0.5) + 1):
                 if n % i == 0:
+                    count -= 1
                     break
-                if i == int(n**0.5):
-                    count += 1
+                
+
     print(f'小さい方の自然数から大きい方の自然数までに存在する素数の個数は {count}')
 
 if __name__=='__main__':
